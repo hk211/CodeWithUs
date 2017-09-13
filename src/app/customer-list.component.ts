@@ -52,6 +52,14 @@ export class CustomerListComponent  {
     }];
 
     customer: Customer;
+
+    shift(increment: number) {
+      console.log('in shift - list component');
+      let inc = this.customers.findIndex(c => c === this.customer) + increment;
+      // if we're at 0 and going left , don't go less than -1
+      inc = Math.min(this.customers.length - 1, Math.max(0, inc));
+      this.customer = this.customers[inc];
+    }
 }
 
 

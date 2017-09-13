@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Customer } from './model';
 
 @Component({
@@ -13,7 +13,17 @@ export class CustomerDetailComponent  {
   hideAddress = false;
   showAddress = true;
 
-  @Input() customer: Customer;// = this.customers[0];
+  @Input() customer: Customer;
+  @Output() shift = new EventEmitter<number>(); // allows you to sends a message up to parent
+
+  left() {
+    console.log('left');
+    this.shift.emit(-1);
+  }
+  right() {
+    console.log('right');
+    this.shift.emit(1);
+  }
 }
 
 
